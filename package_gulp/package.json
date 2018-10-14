@@ -1,0 +1,35 @@
+{
+  "name": "gulppackage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [
+    "gulp",
+    "htmlmin",
+    "hash",
+    "sass",
+    "jsmin"
+  ],
+  "author": "xpfei <you365xpf@163.com>",
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-rev": "^8.1.1",
+    "gulp-rev-collector": "^1.3.1",
+    "gulp-sass": "^4.0.1",
+    "run-sequence": "^2.2.1"
+  }
+}
