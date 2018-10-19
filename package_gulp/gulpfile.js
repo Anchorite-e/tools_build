@@ -119,7 +119,7 @@ gulp.task("serve_sass", function () {
 gulp.task("serve_babel", function () {
     return gulp.src(babelDir + "/**/*.js")
         .pipe(babel({
-            presets: ["es2015"]
+            presets: ["@babel/env"]
         }))
         .pipe(uglify())
         .pipe(gulp.dest(targetDir));
