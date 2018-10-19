@@ -40,7 +40,7 @@ let cssSrcDir = srcDir + "/css";
 let cssTargetDir = targetDir + "/css";
 
 
-let targetHtml = "*.html";      //配置html文件名称，可以指定为某个文件 如：test.html
+let targetHtml = "test.html";      //配置html文件名称，可以指定为某个文件 如：test.html
 /**
  * 热启动开发调试环境
  * 默认启动端口 8090
@@ -97,7 +97,7 @@ gulp.task("build", function (done) {
 
 gulp.task("moveAssets", function () {
     return gulp.src([
-            srcDir + "/*/*.*",
+            srcDir + "/**/*.*",
             "!" + srcDir + "/**/*.html",
             "!" + srcDir + "/**/*.js",
             "!" + srcDir + "/**/*.css",
@@ -166,7 +166,7 @@ gulp.task("hash2css", [], function () {
 gulp.task("hash2js", function () {
     return gulp.src(jsSrcDir + "/*.js")
         .pipe(babel({
-            presets: ["es2015"]
+            presets: ["@babel/env"]
         }))
         .pipe(uglify())
         .pipe(rev())
@@ -200,35 +200,3 @@ gulp.task("rmHashJson", function () {
         jsTargetDir + "/rev-manifest.json"
     ]);
 });
-
-/**
- * 替换hash版本"?v=hash"模式 修改库源码
- * 1、打开node_modules\gulp-rev\index.js
- *    第144行:manifest[originalFile] = revisionedFile;
- *    修改为: manifest[originalFile] = originalFile + "?v=" +file.revHash;
- * 2、打开node_modules\rev-path\index.js
- *    第10行:return filename + "-" + hash + ext;
- *    修改为: return filename + ext;
- * 3、打开node_modules\gulp-rev-collector\index.js
- *    第40行:let cleanReplacement = path.basename(json[key]).replace(new RegExp( opts.revSuffix ), '');
- *    修改为: let cleanReplacement = path.basename(json[key]).split("?")[0];
- */
-
-/**
- *package.json 依赖
-     "dependencies": {
-        "browser-sync": "^2.26.3",
-        "del": "^3.0.0",
-        "gulp": "^3.9.1",
-        "gulp-autoprefixer": "^6.0.0",
-        "gulp-changed": "^3.2.0",
-        "gulp-clean-css": "^3.10.0",
-        "gulp-concat": "^2.6.1",
-        "gulp-htmlmin": "^5.0.1",
-        "gulp-rename": "^1.4.0",
-        "gulp-rev": "^8.1.1",
-        "gulp-rev-collector": "^1.3.1",
-        "gulp-sass": "^4.0.1",
-        "run-sequence": "^2.2.1"
-      }
- */
