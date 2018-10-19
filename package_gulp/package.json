@@ -15,7 +15,7 @@
     "htmlmin",
     "hash",
     "sass",
-    "jsmin"
+    "javaScriptmin"
   ],
   "author": "xpfei <you365xpf@163.com>",
   "license": "MIT",
